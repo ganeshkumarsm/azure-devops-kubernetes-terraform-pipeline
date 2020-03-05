@@ -18,7 +18,7 @@ stages:
     - bash: echo $(Build.BuildId)
     - bash: echo $(Build.Repository.Name)
     - bash: echo $(Build.SourcesDirectory)
-    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
     - task: CopyFiles@2
       inputs:
         SourceFolder: '$(System.DefaultWorkingDirectory)'
@@ -26,5 +26,6 @@ stages:
           **/*.yaml
           **/*.tf
         TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
     
     
