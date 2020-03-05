@@ -14,16 +14,6 @@ stages:
   - job: job1
     steps:
     - bash: echo build first job
-    - bash: ls -R $
-    - bash: java -version
-    - bash: node --version
-    - bash: mvn -version
-    - bash: python --version
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
-    - task: CopyFiles@2
-      inputs:
-        SourceFolder: '$(System.DefaultWorkingDirectory)'
-        Contents: '**'
-        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    - bash: echo $(Build.ArtifactStagingDirectory)
+    - bash: echo $(Build.BuildId)
     
-    - bash: ls -R $(Build.ArtifactStagingDirectory)
