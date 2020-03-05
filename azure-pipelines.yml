@@ -18,4 +18,11 @@ stages:
     - bash: echo $(Build.BuildId)
     - bash: echo $(Build.Repository.Name)
     - bash: echo $(Build.SourcesDirectory)
+    - bash: ls -R $(System.DefaultWorkingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
     
