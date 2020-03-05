@@ -16,4 +16,6 @@ stages:
     - bash: echo build first job
     - bash: echo $(Build.ArtifactStagingDirectory)
     - bash: echo $(Build.BuildId)
+    - bash: echo $(Build.Repository.Name)
+    - bash: echo $(Build.SourcesDirectory)
     
