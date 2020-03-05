@@ -13,37 +13,17 @@ stages:
   jobs:
   - job: job1
     steps:
-    - bash: echo build job1
-  - job: job2
-    steps:
-    - bash: echo build job2
-- stage: DevDeploy
-  dependsOn: build
-  jobs:
-  - job: job1
-    steps:
-    - bash: echo DevDeploy job1
-  - job: job2
-    steps:
-    - bash: echo DevDeploy job2
-- stage: QADeploy
-  dependsOn: build
-  jobs:
-  - job: job1
-    steps:
-    - bash: echo QADeploy job1
-  - job: job2
-    steps:
-    - bash: echo QADeploy job2
-- stage: prodDeploy
-  dependsOn:
-  - build
-  - QADeploy
-  - DevDeploy
-  jobs:
-  - job: job1
-    steps:
-    - bash: echo ProdDeploy job1
-  - job: job2
-    steps:
-    - bash: echo ProdDeploy job2
+    - bash: echo build first job
+    - bash: ls -R $
+    - bash: java -version
+    - bash: node --version
+    - bash: mvn -version
+    - bash: python --version
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**'
+        TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    
+    - bash: ls -R $(Build.ArtifactStagingDirectory)
