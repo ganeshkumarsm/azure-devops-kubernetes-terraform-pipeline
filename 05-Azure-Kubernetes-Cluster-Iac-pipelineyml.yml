@@ -14,16 +14,13 @@ steps:
 - task: TerraformCLI@0
   inputs:
     command: 'init'
-- task: TerraformCLI@0
-  inputs:
-    command: 'validate'
-    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(publickey.secureFilePath)'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/azure/kubernetes'
+    commandOptions: '-var client_id=$(client_id) -var client_secret=$(client_secret) -var ssh_public_key=$(pubickey.secureFilePath)'
     backendType: 'azurerm'
     backendServiceArm: 'Azure-ResourceManager-Service-Connection'
     ensureBackend: true
-    backendAzureRmResourceGroupName: 'terraform-backend-rg'
+    backendAzureRmResourceGroupName: 'tfbackendrg'
     backendAzureRmResourceGroupLocation: 'westeurope'
-    backendAzureRmStorageAccountName: 'storageacctganeshxyz'
-    backendAzureRmContainerName: 'storageacctganeshcontainer'
-    backendAzureRmKey: 'kubernetes-dev.tfstate'
+    backendAzureRmStorageAccountName: 'tfstorageaccountxyz'
+    backendAzureRmContainerName: 'tfstorageaccountcontainer'
+    backendAzureRmKey: 'k8s-dev.tfstate'
