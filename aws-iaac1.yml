@@ -10,14 +10,6 @@ steps:
 - task: TerraformTaskV1@0
   inputs:
     provider: 'aws'
-    command: 'init'
-    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
-    backendServiceAWS: 'My AWS Connection'
-    backendAWSBucketName: 'mytfbucket123'
-    backendAWSKey: 'terraform-dev.tfstate'
-- task: TerraformTaskV1@0
-  inputs:
-    provider: 'aws'
-    command: 'apply'
+    command: 'destroy'
     workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
     environmentServiceNameAWS: 'My AWS Connection'
