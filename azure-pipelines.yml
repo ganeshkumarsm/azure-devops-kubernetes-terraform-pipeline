@@ -8,4 +8,4 @@ steps:
 - script: echo Hello, world!
   displayName: 'Run a one-line script'
 
-- script: echo ls - R $(System.DefaultWorkingDirectory)
+- script: echo ls - R $(System.DefaultWorkingDirectory/configuration/iaac/aws/kubernetes)
