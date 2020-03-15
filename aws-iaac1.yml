@@ -15,3 +15,9 @@ steps:
     backendServiceAWS: 'My AWS Connection'
     backendAWSBucketName: 'mytfbucket123'
     backendAWSKey: 'terraform-dev.tfstate'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'aws'
+    command: 'apply'
+    workingDirectory: '$(System.DefaultWorkingDirectory)/configuration/iaac/aws/kubernetes'
+    environmentServiceNameAWS: 'My AWS Connection'
